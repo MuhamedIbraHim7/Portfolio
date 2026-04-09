@@ -33,8 +33,6 @@ Portfolio/
 │   └── workflows/
 │       └── deploy.yml                    # GitHub Actions deployment
 ├── index.html                             # Main HTML structure
-├── style.css                              # All styling
-├── script.js                              # Interactive functionality
 ├── Mohamed_Ibrahim_Junior_AI_Engineer.pdf # Resume/CV
 └── README.md                              # This file
 ```
