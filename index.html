@@ -392,6 +392,83 @@
             line-height: 1.8;
         }
 
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .project-summary {
+            color: var(--text-secondary);
+        }
+
+        .project-diagram {
+            display: block;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .tech-tags li {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-links:not(:has(a)) {
+            display: none;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
         .skills-group {
             margin-top: 3rem;
         }
@@ -675,6 +752,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
@@ -771,6 +849,166 @@
                         as Top 10 finalist in Sprints Generative AI Program (100+ participants).
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        Projects section — how to add a new card:
+
+        1. Copy one whole <article class="project-card animate-on-scroll"> block
+           below and paste it as another child of .projects-grid.
+        2. Replace every TODO(mohamed) placeholder comment with real content.
+           Do not leave a card half-filled — either finish it or delete it.
+        3. The architecture diagram and the three links (Live demo, Code, Case
+           study) are optional and ship commented-out by default:
+             - Diagram: find the TODO(mohamed) comment for the architecture
+               diagram and uncomment the <img class="project-diagram"> inside
+               it, filling in a real src and alt. If a project has no diagram,
+               leave the whole comment as-is.
+             - Links: inside .project-links, uncomment only the <a> tags you
+               have a real URL for (Live demo / Code / Case study) and fill in
+               the href and link text. If you uncomment none, the whole
+               .project-links row stays hidden automatically (see the
+               .project-links:not(:has(a)) CSS rule) — no empty gap is left
+               in the card.
+        4. tech-tags <li> items are free-form; add or remove as needed, one
+           tool/library per tag.
+    -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Projects</h2>
+                <p><!-- TODO(mohamed): one-line subtitle for the Projects section --></p>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card animate-on-scroll">
+                    <h3><!-- TODO(mohamed): Project 1 — title --></h3>
+                    <p class="project-summary"><!-- TODO(mohamed): Project 1 — one-line summary --></p>
+                    <!-- TODO(mohamed): Project 1 — architecture diagram (optional). Uncomment and fill in src/alt if you have one:
+                    <img class="project-diagram" src="" alt="">
+                    -->
+                    <div class="focus-item">
+                        <h4>Problem</h4>
+                        <p><!-- TODO(mohamed): Project 1 — what problem did this solve? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Approach</h4>
+                        <p><!-- TODO(mohamed): Project 1 — how did you approach it? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Result</h4>
+                        <p><!-- TODO(mohamed): Project 1 — what was the outcome? --></p>
+                    </div>
+                    <ul class="tech-tags">
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                    </ul>
+                    <div class="project-links">
+                        <!-- TODO(mohamed): Project 1 — links (optional). Uncomment any you have a URL for:
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Live demo</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Case study</a>
+                        -->
+                    </div>
+                </article>
+
+                <article class="project-card animate-on-scroll">
+                    <h3><!-- TODO(mohamed): Project 2 — title --></h3>
+                    <p class="project-summary"><!-- TODO(mohamed): Project 2 — one-line summary --></p>
+                    <!-- TODO(mohamed): Project 2 — architecture diagram (optional). Uncomment and fill in src/alt if you have one:
+                    <img class="project-diagram" src="" alt="">
+                    -->
+                    <div class="focus-item">
+                        <h4>Problem</h4>
+                        <p><!-- TODO(mohamed): Project 2 — what problem did this solve? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Approach</h4>
+                        <p><!-- TODO(mohamed): Project 2 — how did you approach it? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Result</h4>
+                        <p><!-- TODO(mohamed): Project 2 — what was the outcome? --></p>
+                    </div>
+                    <ul class="tech-tags">
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                    </ul>
+                    <div class="project-links">
+                        <!-- TODO(mohamed): Project 2 — links (optional). Uncomment any you have a URL for:
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Live demo</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Case study</a>
+                        -->
+                    </div>
+                </article>
+
+                <article class="project-card animate-on-scroll">
+                    <h3><!-- TODO(mohamed): Project 3 — title --></h3>
+                    <p class="project-summary"><!-- TODO(mohamed): Project 3 — one-line summary --></p>
+                    <!-- TODO(mohamed): Project 3 — architecture diagram (optional). Uncomment and fill in src/alt if you have one:
+                    <img class="project-diagram" src="" alt="">
+                    -->
+                    <div class="focus-item">
+                        <h4>Problem</h4>
+                        <p><!-- TODO(mohamed): Project 3 — what problem did this solve? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Approach</h4>
+                        <p><!-- TODO(mohamed): Project 3 — how did you approach it? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Result</h4>
+                        <p><!-- TODO(mohamed): Project 3 — what was the outcome? --></p>
+                    </div>
+                    <ul class="tech-tags">
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                    </ul>
+                    <div class="project-links">
+                        <!-- TODO(mohamed): Project 3 — links (optional). Uncomment any you have a URL for:
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Live demo</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Case study</a>
+                        -->
+                    </div>
+                </article>
+
+                <article class="project-card animate-on-scroll">
+                    <h3><!-- TODO(mohamed): Project 4 — title --></h3>
+                    <p class="project-summary"><!-- TODO(mohamed): Project 4 — one-line summary --></p>
+                    <!-- TODO(mohamed): Project 4 — architecture diagram (optional). Uncomment and fill in src/alt if you have one:
+                    <img class="project-diagram" src="" alt="">
+                    -->
+                    <div class="focus-item">
+                        <h4>Problem</h4>
+                        <p><!-- TODO(mohamed): Project 4 — what problem did this solve? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Approach</h4>
+                        <p><!-- TODO(mohamed): Project 4 — how did you approach it? --></p>
+                    </div>
+                    <div class="focus-item">
+                        <h4>Result</h4>
+                        <p><!-- TODO(mohamed): Project 4 — what was the outcome? --></p>
+                    </div>
+                    <ul class="tech-tags">
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                        <li><!-- TODO(mohamed): tech tag --></li>
+                    </ul>
+                    <div class="project-links">
+                        <!-- TODO(mohamed): Project 4 — links (optional). Uncomment any you have a URL for:
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Live demo</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Code</a>
+                        <a href="" class="project-link" target="_blank" rel="noopener noreferrer">Case study</a>
+                        -->
+                    </div>
+                </article>
             </div>
         </div>
     </section>
