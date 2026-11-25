@@ -1,0 +1,191 @@
+[
+  {
+    "slug": "sales-lead-engine",
+    "title": "AI Sales Lead Engine",
+    "category": "Automation",
+    "status": "Public prototype",
+    "role": "Workflow and rules development",
+    "summary": "Turns Arabic sales inquiries from three channels into one ranked HubSpot queue. Each lead carries a reason for its priority.",
+    "stack": ["n8n", "Azure OpenAI", "HubSpot", "Python", "JavaScript"],
+    "outcome": "All 10 offline qualification scenarios passed.",
+    "overview": "A property buyer can fill in a form, message an agent in Arabic and change their budget before anyone calls back. I built a workflow that keeps those conversations together and gives a salesperson a reason to make the next call.",
+    "problem": "An inquiry that arrives twice can become two deals. A colloquial budget or a request to be called later can also disappear when the conversation moves between channels.",
+    "audience": "Real-estate sales representatives who need to decide which buyer to contact next.",
+    "contribution": "I connected lead intake to HubSpot, implemented scoring rules in Python and JavaScript, and tested both versions on the same inputs.",
+    "solution": "The language model proposes field values with quotes from the buyer. Code checks each quote, parses the budget and calculates priority before the workflow updates the CRM.",
+    "architecture": [
+      {"title": "Collect", "detail": "Form, Meta and WhatsApp webhooks receive inquiries."},
+      {"title": "Reconcile", "detail": "Normalize contact details and match repeat events."},
+      {"title": "Qualify", "detail": "Check Arabic extractions and apply budget and priority rules."},
+      {"title": "Queue", "detail": "Update the HubSpot contact and deal, then export the ranked callback list."}
+    ],
+    "tradeoff": "Two implementations of the rules let me test in Python and run inside n8n Cloud. A parity test checks that the JavaScript port reaches the same decision.",
+    "reliability": "A replayed event is ignored once its CRM update succeeds. Uncertain budgets go to review. Offline scenarios cover duplicate leads, revised budgets, existing contacts and requests for a person.",
+    "dataHandling": "Qualification records can contain phone numbers and budget details. A public demonstration should use synthetic contacts and a separate CRM workspace.",
+    "future": "I would test simultaneous updates to the same lead and expand the Arabic budget fixtures with reviewed, synthetic examples.",
+    "links": [
+      {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/AI-sales-lead-qualification-and-prioritization-system"},
+      {"label": "Offline scenario results", "url": "https://raw.githubusercontent.com/MuhamedIbraHim7/AI-sales-lead-qualification-and-prioritization-system/8759a6db3bbba8ea34a6caa70fa46376a03b1dc9/outputs/test_log.md"}
+    ],
+    "evidence": ["Public project README, rules and parity test at commit 8759a6d.", "The committed offline scenario log uses simulated CRM calls and model outputs."],
+    "media": []
+  },
+  {
+    "slug": "multilingual-rag",
+    "title": "Multilingual RAG Assistant",
+    "category": "Retrieval",
+    "status": "Public prototype",
+    "role": "Retrieval and evaluation engineering",
+    "summary": "Searches a collection of question-and-answer passages, reranks close matches and checks whether the retrieved text can support an answer.",
+    "stack": ["Python", "FAISS", "FastAPI", "Sentence Transformers", "SQLite"],
+    "outcome": "Retrieved the expected passage first for 80 of 100 paraphrased questions.",
+    "overview": "A search system can look accurate when people repeat the wording in its index. I built this question-answering API and measured what happened when the same questions were asked in different words.",
+    "problem": "Similar passages compete for first place. Reranking every query adds latency and can reorder an already strong match.",
+    "audience": "Developers evaluating retrieval quality before adding a question-answering API to an application.",
+    "contribution": "I built the indexing pipeline, added confidence-gated reranking and exposed the retrieval and generation stages through FastAPI. I compared verbatim questions and paraphrases on the same sample.",
+    "solution": "FAISS searches question-and-answer text embedded with a multilingual encoder. When the top scores are close, a cross-encoder reranks the candidates. The response can answer, surface a passage or decline.",
+    "architecture": [
+      {"title": "Index", "detail": "Clean and embed each question with its answer passage."},
+      {"title": "Retrieve", "detail": "Search the FAISS index and compare the top two scores."},
+      {"title": "Rerank", "detail": "Rescore close candidates against the same question-and-answer representation."},
+      {"title": "Respond", "detail": "Ground the reply in the retrieved text and record the request by session."}
+    ],
+    "tradeoff": "Reranking answer text alone pushed correct matches down the list. Matching the index representation and reserving reranking for close calls restored two documented regressions.",
+    "reliability": "The evaluation uses the original passage ID as its target. On 100 paired questions, rank-one retrieval fell from 95 verbatim matches to 80 paraphrased matches. Near-duplicate passages can make this measure stricter than a reader's judgment.",
+    "dataHandling": "The API records requests by session. A shared deployment would need authentication, per-session access checks and a retention policy for questions and responses.",
+    "future": "I would add human judgments for equivalent passages and a separate multilingual query set to test the encoder beyond the existing English evaluation.",
+    "links": [
+      {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/Q-A-Rag-System"},
+      {"label": "Retrieval evaluation", "url": "https://github.com/MuhamedIbraHim7/Q-A-Rag-System/blob/262d844149e5b48c823b349dfdc4a64dce33640a/logs/paraphrase_eval_report.json"}
+    ],
+    "evidence": ["Public README and paired paraphrase evaluation at commit 262d844. The result measures passage retrieval on the project's sample."],
+    "media": []
+  },
+  {
+    "slug": "real-time-voice",
+    "title": "Real-time Voice AI",
+    "category": "Voice AI",
+    "status": "Professional deployment",
+    "role": "AI engineer at Neqabty",
+    "summary": "Connects streaming audio, GPU speech processing and Azure OpenAI to support a live spoken conversation.",
+    "stack": ["Azure OpenAI Realtime", "WebSockets", "GPU speech processing", "Azure A100"],
+    "outcome": "Deployed a working speech-to-speech system at Neqabty.",
+    "overview": "A voice interface has to listen and respond while the person is still engaged. At Neqabty, I built and deployed a real-time system for spoken interactions.",
+    "problem": "The time spent transporting audio, processing speech and producing a response is felt as one pause by the speaker.",
+    "audience": "People using a spoken support interface and the engineers integrating it with the client application.",
+    "contribution": "I connected WebSocket streaming to the Azure OpenAI Realtime API and GPU-accelerated speech services on A100 infrastructure.",
+    "solution": "The system carries audio over a persistent connection and brings together speech recognition, conversational inference and synthesis. The diagram groups the documented components by their purpose.",
+    "architecture": [
+      {"title": "Audio stream", "detail": "WebSockets carry live audio between the client and service."},
+      {"title": "Speech and dialogue", "detail": "GPU speech services and Azure OpenAI Realtime process the conversation."},
+      {"title": "Spoken reply", "detail": "The response returns to the user as audio."}
+    ],
+    "tradeoff": "A persistent connection supports interactive audio. It also makes interrupted sessions and network delays part of the user experience.",
+    "reliability": "The engineering question is whether the full conversation feels responsive. A representative test would include transport, turn detection and output audio as well as model processing.",
+    "dataHandling": "Support conversations can contain personal information. A shareable recording would require participant consent or a scripted conversation using synthetic details.",
+    "future": "I would publish an approval-cleared demo and a latency distribution with explicit measurement points and network conditions.",
+    "links": [],
+    "evidence": ["Mohamed Ibrahim’s supplied CV, page 1, Neqabty AI Engineer. Deployment and stack are résumé-reported. A public benchmark and recording were unavailable."],
+    "media": []
+  },
+  {
+    "slug": "arabic-document-search",
+    "title": "Arabic Document Search",
+    "category": "Retrieval",
+    "status": "Professional deployment",
+    "role": "AI engineer at Neqabty",
+    "thumbnail": "assets/art/documents.svg",
+    "summary": "Helps syndicate users find answers inside Arabic PDFs. Each response points back to the passages used to produce it.",
+    "stack": ["Azure AI Search", "Document Intelligence", "GPT-4o", "Azure OpenAI"],
+    "outcome": "Deployed across five syndicates, as reported in my CV.",
+    "overview": "Finding the right paragraph in a collection of Arabic PDFs can take longer than answering the question itself. At Neqabty, I designed a retrieval system that brings source passages into the conversation.",
+    "problem": "Users need to verify an answer against the original document. A plausible response is difficult to trust when they cannot locate its source.",
+    "audience": "Users of syndicate services searching information held in Arabic documents.",
+    "contribution": "I architected the Azure retrieval system, built custom embedding pipelines and worked with the backend and mobile teams on delivery.",
+    "solution": "Document Intelligence extracts text, an embedding pipeline makes passages searchable, and Azure AI Search supplies relevant context to GPT-4o for a cited response.",
+    "architecture": [
+      {"title": "Extract", "detail": "Read the Arabic PDFs with Azure AI Document Intelligence."},
+      {"title": "Index", "detail": "Represent passages with embeddings and index them in Azure AI Search."},
+      {"title": "Retrieve", "detail": "Find relevant passages for the user's question."},
+      {"title": "Cite", "detail": "Generate a response grounded in the retrieved material."}
+    ],
+    "tradeoff": "The answer depends on the quality of both text extraction and search. A citation makes the supporting text available for a reader to inspect.",
+    "reliability": "Useful evaluation cases include imperfect PDF extraction, a question with several plausible passages and a question the documents cannot answer. Client documents and example queries stay private.",
+    "dataHandling": "In a deployment with different document permissions, retrieval needs to enforce access before passing text to the model. Public examples would require documents cleared for sharing.",
+    "future": "I would build an Arabic evaluation set from material cleared for publication and score passage retrieval separately from citation accuracy.",
+    "links": [],
+    "evidence": ["Mohamed Ibrahim’s supplied CV, page 1, Neqabty AI Engineer. The CV reports deployment across five syndicates and over 1,000 monthly queries."],
+    "media": []
+  },
+  {
+    "slug": "retail-analytics-copilot",
+    "title": "Retail Analytics Copilot",
+    "category": "Agent systems",
+    "status": "Public prototype",
+    "role": "Agent workflow development",
+    "summary": "Answers retail questions using policy documents and Northwind sales data. A LangGraph workflow selects retrieval, SQL or both.",
+    "stack": ["DSPy", "LangGraph", "SQLite", "Ollama", "Python"],
+    "outcome": "Five of six questions answered correctly in the documented evaluation.",
+    "overview": "“How long can a customer return a beverage?” needs a policy. “Which category sold the most during a campaign?” needs a date range and a calculation. I built a local copilot that can take either path.",
+    "problem": "Business definitions live in documents while sales figures live in tables. A query can execute successfully and still answer the wrong business question.",
+    "audience": "Analysts exploring how a local language model could combine policy lookups with sales calculations.",
+    "contribution": "I implemented the agent graph, added worked SQL examples for the local model and reconciled campaign dates with the sample database.",
+    "solution": "The graph routes each question to document search, SQLite or a hybrid flow. For hybrid questions, retrieved definitions and dates guide SQL generation. Results include the answer and its source documents or tables.",
+    "architecture": [
+      {"title": "Route", "detail": "Select a document, SQL or hybrid path."},
+      {"title": "Plan", "detail": "Retrieve policy text and campaign constraints when needed."},
+      {"title": "Execute", "detail": "Generate SQL and retry a failed statement up to twice."},
+      {"title": "Synthesize", "detail": "Format a typed answer with citations to documents or tables."}
+    ],
+    "tradeoff": "A small local model kept inference on the machine but needed worked examples for SQLite joins and dates. The campaign calendar also had to agree with the years in Northwind.",
+    "reliability": "In the six-question evaluation, an all-time ranking returned no rows because the planner added an irrelevant campaign date. The saved output exposes the SQL so the error can be traced.",
+    "dataHandling": "The prototype runs against the Northwind sample database. Connecting to business data would require read-only credentials, table-level access control and query limits.",
+    "future": "I would protect all-time questions against inherited date filters and test the planner on a larger held-out set with read-only database access.",
+    "links": [
+      {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/retail-analytics-copilot"},
+      {"label": "Evaluation output", "url": "https://raw.githubusercontent.com/MuhamedIbraHim7/retail-analytics-copilot/8b43042c85537ada7baf547dd08065ff685812e9/outputs_final.jsonl"}
+    ],
+    "evidence": ["Public project README, saved evaluation output and agent graph at commit 8b43042. The six-question result applies to the project's sample database."],
+    "media": []
+  },
+  {
+    "slug": "bokrana",
+    "title": "BOKRANA",
+    "category": "Education",
+    "status": "Live platform",
+    "role": "Generative AI instructor",
+    "summary": "An Arabic learning platform where beginners apply generative AI in live sessions and submit a practical project for instructor review.",
+    "stack": ["Arabic and English interface", "Student dashboard", "Project review"],
+    "outcome": "A live four-week course with eight scheduled sessions and a capstone submission path.",
+    "overview": "BOKRANA gives Arabic-speaking beginners a route from a practical question to a project they can share. The public course and private student dashboard connect the lessons, enrollment and final project.",
+    "problem": "A list of AI tools gives a learner little guidance on how to use them in a real assignment. The course uses practical work and instructor feedback to connect individual sessions.",
+    "audience": "Arabic-speaking students, teachers and professionals learning to use generative AI in their work.",
+    "contribution": "I teach the generative AI course and review submitted projects. The curriculum covers research, content creation, presentations and website building.",
+    "solution": "The platform explains enrollment, takes learners through a four-week course and accepts their capstone through the student dashboard. Learners can opt to submit work for the public showcase.",
+    "architecture": [
+      {"title": "Explore", "detail": "Read the public syllabus and choose a practical goal."},
+      {"title": "Enroll", "detail": "Sign in and complete the payment-review process."},
+      {"title": "Build", "detail": "Apply the live sessions to a final project."},
+      {"title": "Review", "detail": "Submit the project for instructor review and optional publication."}
+    ],
+    "tradeoff": "Reviewing payment and project submissions adds a manual step. It gives the instructor control over access and which work is made public.",
+    "reliability": "Course access begins after payment approval. Public examples are labeled separately from student work, and the showcase describes the instructor review required before publication.",
+    "dataHandling": "The syllabus and course overview are public. Enrollment and payment review involve student data, so the walkthrough shows the public learner experience.",
+    "future": "I would publish an opt-in capstone walkthrough that documents the learner's question, tool choices, revisions and final result.",
+    "links": [
+      {"label": "Visit BOKRANA", "url": "https://bokrana.lovable.app/"},
+      {"label": "Course syllabus", "url": "https://bokrana.lovable.app/en/course"}
+    ],
+    "evidence": ["BOKRANA public instructor profile, course syllabus, enrollment instructions and project showcase reviewed on 25 November 2026. The diagram describes the learner journey."],
+    "media": [
+      {
+        "type": "image",
+        "src": "assets/images/evidence-bokrana.webp",
+        "alt": "Arabic BOKRANA course homepage showing the practical AI course and enrollment link.",
+        "caption": "BOKRANA’s public Arabic course homepage, captured in November 2026.",
+        "width": 1440,
+        "height": 900
+      }
+    ]
+  }
+]

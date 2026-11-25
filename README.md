@@ -1,141 +1,43 @@
-# AI Engineer Portfolio
+# Mohamed Ibrahim · Applied AI Engineer
 
-Professional portfolio website for Mohamed Ibrahim - Junior AI Engineer specializing in production-grade AI systems, RAG chatbots, and Azure Cloud deployments.
+A static portfolio with six engineering case studies, a project index, professional experience, teaching, recognition and a downloadable CV. The site serves complete HTML under the existing GitHub Pages project path. [Live portfolio](https://muhamedibrahim7.github.io/Portfolio/)
 
-## 🌐 Live Website
+## Run locally
 
-**https://muhamedibrahim7.github.io/Portfolio/**
+Use Python 3.9 or newer. From the repository root, regenerate the pages and serve the parent directory to reproduce the Pages URL structure.
 
-## 📋 Features
-
-- ✨ Clean, professional design with dark/light theme
-- 🎯 Detailed work experience timeline
-- 🚀 Project showcase with tech stacks
-- 📜 Certifications and achievements
-- 📱 Fully responsive (mobile-friendly)
-- 🎨 Smooth scroll animations
-- 💼 Downloadable CV/Resume
-- 🔗 Professional Lucide icons
-
-## 🛠️ Technologies Used
-
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS variables
-- **JavaScript** - Interactive functionality
-- **Lucide Icons** - Professional icon library
-- **GitHub Pages** - Free hosting
-
-## 📁 Project Structure
-
-```
-Portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml                    # GitHub Actions deployment
-├── index.html                             # Main HTML structure
-├── Mohamed_Ibrahim_Junior_AI_Engineer.pdf # Resume/CV
-└── README.md                              # This file
+```sh
+python3 -B scripts/build.py
+python3 -B scripts/check_site.py
+python3 -m http.server 8000 --bind 127.0.0.1 --directory ..
 ```
 
-## 🚀 Deployment
+Open [the local portfolio](http://127.0.0.1:8000/Portfolio/) when the checkout directory is named `Portfolio`. Visitors receive plain HTML, CSS, JavaScript and local assets. Python is an authoring tool. The browser and deployment workflow use the committed files directly.
 
-This portfolio is automatically deployed to GitHub Pages using GitHub Actions.
+## Where changes belong
 
-### Automatic Deployment
+| Change | Source |
+| --- | --- |
+| Project copy, results, evidence, media and order | [Project data](content/projects.json) |
+| Achievement entries and credentials | [Recognition data](content/recognition.json) |
+| Skill depth and project references | [Skills data](content/skills.json) |
+| Homepage, timeline, teaching and contact | [Homepage template](templates/home.html) |
+| Shared navigation and metadata | [Layout](templates/layout.html) and [builder](scripts/build.py) |
+| Case study and project index layouts | [Case study](templates/case.html) and [index](templates/projects.html) |
+| Responsive layout, themes and interactions | [Stylesheet](assets/styles.css) and [JavaScript](assets/main.js) |
+| CV download | [Mohamed-Ibrahim-AI-Engineer.pdf](Mohamed-Ibrahim-AI-Engineer.pdf) |
 
-Every push to the `main` branch triggers automatic deployment:
+Run the builder after editing source content. Commit the generated HTML and sitemap alongside the source. The first three project entries appear on the homepage. [Portfolio maintenance and media checklist](docs/CONTENT_GUIDE.md)
 
-1. **Push changes** to the `main` branch
-2. GitHub Actions automatically builds and deploys
-3. Changes are live at **https://muhamedibrahim7.github.io/Portfolio/** within 1-2 minutes
+## Review and deployment
 
-### Manual Deployment
+The checked-in workflow deploys the repository root on a push to `main` or a manual dispatch. At audit time GitHub also reported branch-based Pages publishing from `main` at `/`. A feature branch can be reviewed and tested locally before merging. [Deployment workflow](.github/workflows/deploy.yml)
 
-You can also trigger deployment manually:
+- [Before-and-after screenshots](docs/COMPARISON.md)
+- [Audit, evidence decisions and open content questions](docs/PORTFOLIO_AUDIT.md)
+- [Suggested scripts for three project demos](docs/DEMO_SCRIPTS.md)
+- [Test methods, measured results and limits](docs/TEST_REPORT.md)
 
-1. Go to **Actions** tab in GitHub
-2. Select **Deploy to GitHub Pages** workflow
-3. Click **Run workflow**
+## Assets
 
-## 📝 Local Development
-
-To run this portfolio locally:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/MuhamedIbraHim7/Portfolio.git
-   cd Portfolio
-   ```
-
-2. **Open in browser:**
-   ```bash
-   # On macOS
-   open index.html
-   
-   # On Linux
-   xdg-open index.html
-   
-   # On Windows
-   start index.html
-   ```
-
-Or use a local server:
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (with http-server)
-npx http-server
-```
-
-Then visit `http://localhost:8000`
-
-## 🎨 Customization
-
-### Update Content
-
-1. **Edit HTML** (`index.html`) - Update text, links, and structure
-2. **Edit CSS** (`style.css`) - Change colors, fonts, and layout
-3. **Edit JS** (`script.js`) - Modify interactive behavior
-
-### Change Theme Colors
-
-Edit CSS variables in `style.css`:
-
-```css
-:root {
-    --bg-primary: #0f0f0f;      /* Dark background */
-    --bg-secondary: #1a1a1a;    /* Card background */
-    --text-primary: #e0e0e0;    /* Main text color */
-    --text-secondary: #a0a0a0;  /* Secondary text */
-    --accent: #4a9eff;          /* Accent/link color */
-    --border: #2a2a2a;          /* Border color */
-}
-```
-
-### Add New Sections
-
-1. Add HTML section in `index.html`
-2. Add corresponding styles in `style.css`
-3. Update navigation links
-
-## 📄 License
-
-This portfolio template is open source and free to use.
-
-## 👤 Author
-
-**Mohamed Ibrahim**
-- Email: mohamed3ibrahim20@gmail.com
-- LinkedIn: [mohamedibrahim18](https://linkedin.com/in/mohamedibrahim18)
-- GitHub: [MuhamedIbraHim7](https://github.com/MuhamedIbraHim7)
-
-## 🙏 Acknowledgments
-
-- Icons by [Lucide](https://lucide.dev/)
-- Fonts by [Google Fonts](https://fonts.google.com/)
-- Hosted on [GitHub Pages](https://pages.github.com/)
-
----
-
-⭐ If you like this portfolio, feel free to star the repository!
+The portrait is credited to Mohamed’s BOKRANA instructor profile. The learning-platform image is a capture of BOKRANA’s public landing page. The project thumbnails are original architecture illustrations. DM Sans is self-hosted under the SIL Open Font License. [Instructor profile](https://bokrana.lovable.app/en/about) · [BOKRANA](https://bokrana.lovable.app/) · [Font license](assets/fonts/OFL.txt)

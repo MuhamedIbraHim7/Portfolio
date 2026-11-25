@@ -1,0 +1,11 @@
+[
+  ["Agentic AI & LLM applications","Project experience","LangGraph routing, DSPy and tool selection","retail-analytics-copilot"],
+  ["RAG & information retrieval","Production experience","Arabic PDFs, custom embeddings and Azure AI Search","arabic-document-search"],
+  ["Voice AI & multimodal systems","Production experience","WebSocket audio, speech recognition and synthesis","real-time-voice"],
+  ["Backend & API engineering","Project experience","FastAPI, session persistence and SQLite","multilingual-rag"],
+  ["Azure cloud & deployment","Production experience","Azure OpenAI Realtime and A100 GPU infrastructure","real-time-voice"],
+  ["Workflow automation & integrations","Project experience","n8n webhooks, CRM synchronization and replay handling","sales-lead-engine"],
+  ["Machine learning & data engineering","Project experience","Dataset cleaning, multilingual embeddings and indexing","multilingual-rag"],
+  ["Testing, evaluation & observability","Project experience","Retrieval evaluation, request logs and scenario tests","multilingual-rag"],
+  ["Additional tools","Working knowledge","Docker and AWS fundamentals, LangSmith and Langfuse",""]
+]

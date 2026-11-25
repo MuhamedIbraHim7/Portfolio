@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Hackathons & finalist placements",
+    "items": [
+      {"date": "Nov 2026", "name": "4th of 17 teams · n8n Hackathon Cairo", "detail": "Built an AI-powered sales lead qualification and prioritization agent for real estate."},
+      {"date": "May 2025", "name": "Top 3 of 29 teams · EYouth Data Analysis Hackathon", "detail": "Developed a customer churn and loan default prediction solution."},
+      {"date": "Mar 2025", "name": "Top 10 finalist · Sprints Generative AI Program", "detail": "Selected from more than 100 participants for a multi-agent CrewAI system."}
+    ]
+  },
+  {
+    "title": "Technical presentations",
+    "items": [
+      {"date": "At Neqabty", "name": "NVIDIA × Microsoft Accelerator Demo Day", "detail": "Presented a proof-of-concept agent architecture using LangChain, LangGraph and Azure OpenAI."},
+      {"date": "Mar 2025", "name": "Sprints Generative AI Program", "detail": "Presented a multi-agent research and reporting system to engineers and mentors."}
+    ]
+  },
+  {
+    "title": "Certifications & training",
+    "items": [
+      {"date": "2025", "name": "EYouth Data Analysis Bootcamp", "detail": "EYouth"},
+      {"date": "2025", "name": "Building Multi-Agent Systems", "detail": "CrewAI"},
+      {"date": "2025", "name": "AI Career Essentials", "detail": "ALX"},
+      {"date": "2023", "name": "Machine Learning Cross-Skilling", "detail": "Udacity"}
+    ]
+  },
+  {
+    "title": "Degree & graduation project",
+    "items": [
+      {"date": "2018 – 2023", "name": "Bachelor of Computer Science & Engineering", "detail": "Faculty of Electronic Engineering, Menoufia University, Egypt. My graduation project was a plant disease detection web app, graded Excellent."}
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" fill="none">
+  <rect width="560" height="230" fill="#dce8dd"/><defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".85" fill="#668676" opacity=".5"/></pattern></defs><rect width="560" height="230" fill="url(#dots)"/>
+  <g stroke="#5a796c" stroke-dasharray="4 6"><path d="M0 183h560M0 48h560"/></g>
+  <g stroke="#4b6b5e" stroke-width="2" stroke-linejoin="round">
+    <path d="m151 139 124-68 133 67-125 70Z" fill="#97b19e"/><path d="m151 127 124-68 133 67-125 70Z" fill="#bdcfbf"/><path d="m151 113 124-68 133 67-125 70Z" fill="#dae6da"/><path d="m151 96 124-68 133 67-125 70Z" fill="#f2f5e9"/>
+    <path d="m189 96 68-38M204 104l77-43M219 111l54-29M235 119l75-40" stroke-width="3" stroke-linecap="round"/>
+  </g><ellipse cx="322" cy="89" rx="23" ry="15" fill="#abc3ae" fill-opacity=".7" stroke="#305f4c" stroke-width="4" transform="rotate(-21 322 89)"/><path d="m342 98 20 14" stroke="#305f4c" stroke-width="6" stroke-linecap="round"/>
+</svg>
