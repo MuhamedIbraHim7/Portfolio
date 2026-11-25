@@ -21,10 +21,11 @@
     ],
     "tradeoff": "Two implementations of the rules let me test in Python and run inside n8n Cloud. A parity test checks that the JavaScript port reaches the same decision.",
     "reliability": "A replayed event is ignored once its CRM update succeeds. Uncertain budgets go to review. Offline scenarios cover duplicate leads, revised budgets, existing contacts and requests for a person.",
+    "dataHandling": "Qualification records can contain phone numbers and budget details. A public demonstration should use synthetic contacts and a separate CRM workspace.",
     "future": "I would test simultaneous updates to the same lead and expand the Arabic budget fixtures with reviewed, synthetic examples.",
     "links": [
       {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/AI-sales-lead-qualification-and-prioritization-system"},
-      {"label": "Offline scenario results", "url": "https://github.com/MuhamedIbraHim7/AI-sales-lead-qualification-and-prioritization-system/blob/8759a6db3bbba8ea34a6caa70fa46376a03b1dc9/outputs/test_log.md"}
+      {"label": "Offline scenario results", "url": "https://raw.githubusercontent.com/MuhamedIbraHim7/AI-sales-lead-qualification-and-prioritization-system/8759a6db3bbba8ea34a6caa70fa46376a03b1dc9/outputs/test_log.md"}
     ],
     "evidence": ["Public project README, rules and parity test at commit 8759a6d.", "The committed offline scenario log uses simulated CRM calls and model outputs."],
     "media": []
@@ -51,6 +52,7 @@
     ],
     "tradeoff": "Reranking answer text alone pushed correct matches down the list. Matching the index representation and reserving reranking for close calls restored two documented regressions.",
     "reliability": "The evaluation uses the original passage ID as its target. On 100 paired questions, rank-one retrieval fell from 95 verbatim matches to 80 paraphrased matches. Near-duplicate passages can make this measure stricter than a reader's judgment.",
+    "dataHandling": "The API records requests by session. A shared deployment would need authentication, per-session access checks and a retention policy for questions and responses.",
     "future": "I would add human judgments for equivalent passages and a separate multilingual query set to test the encoder beyond the existing English evaluation.",
     "links": [
       {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/Q-A-Rag-System"},
@@ -80,6 +82,7 @@
     ],
     "tradeoff": "A persistent connection supports interactive audio. It also makes interrupted sessions and network delays part of the user experience.",
     "reliability": "The engineering question is whether the full conversation feels responsive. A representative test would include transport, turn detection and output audio as well as model processing.",
+    "dataHandling": "Support conversations can contain personal information. A shareable recording would require participant consent or a scripted conversation using synthetic details.",
     "future": "I would publish an approval-cleared demo and a latency distribution with explicit measurement points and network conditions.",
     "links": [],
     "evidence": ["Mohamed Ibrahim’s supplied CV, page 1, Neqabty AI Engineer. Deployment and stack are résumé-reported. A public benchmark and recording were unavailable."],
@@ -91,6 +94,7 @@
     "category": "Retrieval",
     "status": "Professional deployment",
     "role": "AI engineer at Neqabty",
+    "thumbnail": "assets/art/documents.svg",
     "summary": "Helps syndicate users find answers inside Arabic PDFs. Each response points back to the passages used to produce it.",
     "stack": ["Azure AI Search", "Document Intelligence", "GPT-4o", "Azure OpenAI"],
     "outcome": "Deployed across five syndicates, as reported in my CV.",
@@ -107,6 +111,7 @@
     ],
     "tradeoff": "The answer depends on the quality of both text extraction and search. A citation makes the supporting text available for a reader to inspect.",
     "reliability": "Useful evaluation cases include imperfect PDF extraction, a question with several plausible passages and a question the documents cannot answer. Client documents and example queries stay private.",
+    "dataHandling": "In a deployment with different document permissions, retrieval needs to enforce access before passing text to the model. Public examples would require documents cleared for sharing.",
     "future": "I would build an Arabic evaluation set from material cleared for publication and score passage retrieval separately from citation accuracy.",
     "links": [],
     "evidence": ["Mohamed Ibrahim’s supplied CV, page 1, Neqabty AI Engineer. The CV reports deployment across five syndicates and over 1,000 monthly queries."],
@@ -134,10 +139,11 @@
     ],
     "tradeoff": "A small local model kept inference on the machine but needed worked examples for SQLite joins and dates. The campaign calendar also had to agree with the years in Northwind.",
     "reliability": "In the six-question evaluation, an all-time ranking returned no rows because the planner added an irrelevant campaign date. The saved output exposes the SQL so the error can be traced.",
+    "dataHandling": "The prototype runs against the Northwind sample database. Connecting to business data would require read-only credentials, table-level access control and query limits.",
     "future": "I would protect all-time questions against inherited date filters and test the planner on a larger held-out set with read-only database access.",
     "links": [
       {"label": "Source code", "url": "https://github.com/MuhamedIbraHim7/retail-analytics-copilot"},
-      {"label": "Evaluation output", "url": "https://github.com/MuhamedIbraHim7/retail-analytics-copilot/blob/8b43042c85537ada7baf547dd08065ff685812e9/outputs_final.jsonl"}
+      {"label": "Evaluation output", "url": "https://raw.githubusercontent.com/MuhamedIbraHim7/retail-analytics-copilot/8b43042c85537ada7baf547dd08065ff685812e9/outputs_final.jsonl"}
     ],
     "evidence": ["Public project README, saved evaluation output and agent graph at commit 8b43042. The six-question result applies to the project's sample database."],
     "media": []
@@ -164,6 +170,7 @@
     ],
     "tradeoff": "Reviewing payment and project submissions adds a manual step. It gives the instructor control over access and which work is made public.",
     "reliability": "Course access begins after payment approval. Public examples are labeled separately from student work, and the showcase describes the instructor review required before publication.",
+    "dataHandling": "The syllabus and course overview are public. Enrollment and payment review involve student data, so the walkthrough shows the public learner experience.",
     "future": "I would publish an opt-in capstone walkthrough that documents the learner's question, tool choices, revisions and final result.",
     "links": [
       {"label": "Visit BOKRANA", "url": "https://bokrana.lovable.app/"},

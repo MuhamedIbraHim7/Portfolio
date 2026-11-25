@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" fill="none">
+  <rect width="560" height="230" fill="#f2dfce"/><defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".85" fill="#a96c4d" opacity=".45"/></pattern></defs><rect width="560" height="230" fill="url(#dots)"/>
+  <g stroke="#a65a38" stroke-width="2"><path d="M-8 48h131c48 0 44 65 85 65h27M-8 113h243M-8 181h131c48 0 44-68 85-68h27"/><path d="M315 113h27c37 0 38-69 79-69h152M315 113h258M315 113h27c37 0 38 69 79 69h152"/></g>
+  <g fill="#f7ede0" stroke="#9b4f30" stroke-width="2"><rect x="71" y="37" width="23" height="23" rx="4"/><circle cx="83" cy="113" r="12"/><path d="m83 168 14 13-14 13-14-13Z"/></g>
+  <path d="m280 51 62 62-62 62-62-62Z" fill="#d58d65" stroke="#884429" stroke-width="2"/><path d="m280 43 62 62-62 62-62-62Z" fill="#f7e9db" stroke="#884429" stroke-width="2"/>
+  <g fill="none" stroke="#954728" stroke-width="4" stroke-linecap="round"><path d="M258 95h36M267 105h28M275 115h20"/></g>
+  <g fill="#9a4b2d"><circle cx="414" cy="44" r="5"/><circle cx="414" cy="113" r="5"/><circle cx="414" cy="182" r="5"/></g>
+</svg>
